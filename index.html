@@ -1,223 +1,402 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>ArchiWood 橱柜设计 & CNC 生产系统</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <title>ArchiWood 橱柜软件 · Cabinet Design & CNC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ArchiWood 橱柜与定制家具设计生产一体化软件，支持 SketchUp 参数化建模、自动排料、CNC 输出与生产管理。">
+  <style>
+    :root {
+      --blue: #0d6efd;
+      --blue-dark: #084298;
+      --bg-light: #f5f7fb;
+      --text-main: #222;
+      --text-muted: #666;
+      --radius: 18px;
+      --shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-main);
+      background: #ffffff;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
-<style>
-body { margin:0; font-family:"Segoe UI", sans-serif; background:#f5f6fa; }
-a { text-decoration:none; }
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
 
-/* ===== 顶部导航栏 ===== */
-header {
-    background:#003f91;
-    color:white;
-    padding:18px 0;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-.navbar {
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-.navbar a {
-    color:white;
-    margin-left:25px;
-    font-size:17px;
-}
-.navbar a:hover { opacity:0.7; }
+    header {
+      border-bottom: 1px solid #e5e7eb;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--blue-dark);
+      letter-spacing: 0.03em;
+    }
+    .logo span {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(13, 110, 253, 0.1);
+      margin-left: 6px;
+      font-size: 12px;
+      color: var(--blue);
+    }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover { color: var(--blue); }
 
-/* ===== 标题区 ===== */
-.hero {
-    text-align:center;
-    padding:60px 20px;
-    background:white;
-}
-.hero h1 {
-    font-size:36px;
-    color:#003f91;
-}
-.hero p {
-    font-size:18px;
-    color:#555;
-}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+    .btn-primary:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      border-color: rgba(148, 163, 184, 0.8);
+      color: var(--text-main);
+      background: #fff;
+    }
+    .btn-outline:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
 
-/* ===== 图片展示区 ===== */
-.gallery {
-    max-width:1200px;
-    margin:40px auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(350px, 1fr));
-    gap:20px;
-}
-.card {
-    background:white;
-    border-radius:14px;
-    overflow:hidden;
-    box-shadow:0 5px 25px rgba(0,0,0,0.1);
-}
-.card img {
-    width:100%;
-    height:240px;
-    object-fit:cover;
-}
-.card-title {
-    padding:15px;
-    font-size:16px;
-    color:#003f91;
-}
+    /* hero */
+    .hero {
+      padding: 56px 0 40px;
+      background: radial-gradient(circle at top left, #e0ecff 0, transparent 55%),
+                  radial-gradient(circle at bottom right, #dbeafe 0, transparent 55%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--blue-dark);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .hero-title {
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .hero-title span { color: var(--blue); }
+    .hero-sub { font-size: 15px; color: var(--text-muted); margin-bottom: 20px; }
+    .hero-sub strong { color: var(--text-main); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+    .hero-note { font-size: 12px; color: var(--text-muted); }
 
-/* ===== 分段标题 ===== */
-.section-title {
-    text-align:center;
-    font-size:28px;
-    margin:60px 0 20px;
-    color:#003f91;
-}
+    .hero-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
 
-/* ===== 产品功能区 ===== */
-.features {
-    max-width:1100px;
-    margin:auto;
-    background:white;
-    padding:30px;
-    border-radius:14px;
-    box-shadow:0 5px 25px rgba(0,0,0,0.1);
-    line-height:1.8;
-    font-size:18px;
-}
+    .hero-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(13, 110, 253, 0.05);
+      color: var(--blue-dark);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
 
-/* ===== 视频教程区 ===== */
-.video-box {
-    max-width:900px;
-    margin:30px auto;
-    background:white;
-    padding:20px;
-    border-radius:14px;
-    box-shadow:0 5px 25px rgba(0,0,0,0.1);
-}
-iframe {
-    width:100%;
-    height:450px;
-    border-radius:12px;
-}
+    /* section */
+    section {
+      padding: 40px 0;
+    }
+    .section-head {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+    .section-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-dark);
+      margin-bottom: 4px;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .section-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
 
-/* ===== 联系方式 ===== */
-.contact-box {
-    max-width:800px;
-    margin:40px auto;
-    background:white;
-    padding:25px;
-    border-radius:14px;
-    box-shadow:0 5px 25px rgba(0,0,0,0.1);
-    font-size:18px;
-    line-height:2;
-}
+    /* cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card {
+      border-radius: var(--radius);
+      border: 1px solid #e5e7eb;
+      padding: 18px;
+      background: #fff;
+    }
 
-/* ===== 页脚 ===== */
-footer {
-    text-align:center;
-    padding:20px;
-    color:#888;
-}
-</style>
+    /* gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .gallery-item {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      background: #0b1120;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .gallery-caption {
+      padding: 8px 10px;
+      font-size: 12px;
+      color: #e5e7eb;
+      background: #020617;
+    }
+
+    /* pricing */
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .price-card {
+      border-radius: var(--radius);
+      border: 1px solid #e5e7eb;
+      padding: 18px;
+      background: #fff;
+      position: relative;
+    }
+    .price-card.popular {
+      border-color: var(--blue);
+      box-shadow: var(--shadow);
+    }
+
+    /* contact */
+    .contact-card {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow);
+    }
+
+    footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 16px 0;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      background: #f9fafb;
+      margin-top: 32px;
+    }
+
+  </style>
 </head>
-
 <body>
 
-<!-- 顶部导航 -->
 <header>
-    <div class="navbar">
-        <div style="font-size:20px; font-weight:bold;">ArchiWood 橱柜设计 & CNC 系统</div>
-        <div>
-            <a href="#gallery">软件截图</a>
-            <a href="#features">产品介绍</a>
-            <a href="#videos">视频教程</a>
-            <a href="#contact">联系我们</a>
-        </div>
+  <div class="container nav">
+    <div class="logo">
+      ArchiWood <span>Cabinet Software</span>
     </div>
+    <nav class="nav-links">
+      <a href="#who">适合谁 · Who</a>
+      <a href="#features">优势 · Features</a>
+      <a href="#workflow">流程 · Workflow</a>
+      <a href="#gallery">截图 · Demo</a>
+      <a href="#pricing">价格 · Pricing</a>
+      <a href="#contact">联系 · Contact</a>
+    </nav>
+  </div>
 </header>
 
-<!-- 顶部介绍区 -->
-<section class="hero">
-    <h1>ArchiWood 橱柜设计 & CNC 生产系统</h1>
-    <p>极速建模 · 自动排料 · 智能打孔 · CNC 输出 · 标签二维码 · 全工厂工艺支持</p>
-</section>
+<main>
 
-<!-- 软件截图展示 -->
-<h2 class="section-title" id="gallery">软件界面 & 实际流程 · Screens & Workflow</h2>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-eyebrow">KITCHEN & FURNITURE SOFTWARE</div>
+        <h1 class="hero-title">
+          <span>ArchiWood</span> 橱柜软件<br>
+          从设计到 <span>排料 · CNC</span> 一次完成
+        </h1>
+        <p class="hero-sub">
+          面向 <strong>工厂 / 加工店 / 设计师</strong> 的
+          <strong>SketchUp 参数化橱柜 & 全屋定制系统</strong>。
+        </p>
+      </div>
 
-<div class="gallery">
-    <div class="card">
-        <img src="nesting-layout.png">
-        <div class="card-title">自动排料 · Nesting layout</div>
+      <div class="hero-card">
+        <div class="hero-tag">你能得到什么</div>
+        <ul class="hero-list">
+          <li>10× 设计速度</li>
+          <li>完整橱柜 / 衣柜参数库</li>
+          <li>一键排料 & CNC 输出</li>
+          <li>远程培训 + 工艺梳理</li>
+        </ul>
+      </div>
+
     </div>
+  </section>
 
-    <div class="card">
-        <img src="cabinet-library1.png">
-        <div class="card-title">橱柜参数库 01 · Cabinet Library</div>
+  <!-- Gallery -->
+  <section id="gallery" style="background: var(--bg-light);">
+    <div class="container">
+
+      <div class="section-head">
+        <div class="section-eyebrow">SCREENSHOTS</div>
+        <h2 class="section-title">软件界面 · Screens</h2>
+      </div>
+
+      <div class="gallery">
+
+        <div class="gallery-item">
+          <img src="nesting-layout.png" alt="Nesting layout">
+          <div class="gallery-caption">自动排料 · Nesting Layout</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="cabinet-library1.png" alt="Cabinet Library 1">
+          <div class="gallery-caption">橱柜参数库 01</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="cabinet-library2.png" alt="Cabinet Library 2">
+          <div class="gallery-caption">橱柜参数库 02</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="cabinet-library3.png" alt="Cabinet Library 3">
+          <div class="gallery-caption">橱柜参数库 03</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="nesting-layout.png" alt="More Nesting">
+          <div class="gallery-caption">排料示例 · Layout</div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="cabinet-library3.png" alt="Cabinet Manager">
+          <div class="gallery-caption">工艺管理示例</div>
+        </div>
+
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-        <img src="cabinet-library2.png">
-        <div class="card-title">橱柜参数库 02 · Cabinet Library</div>
+  <!-- Pricing -->
+  <section id="pricing">
+    <div class="container">
+
+      <div class="section-head">
+        <div class="section-eyebrow">PRICING</div>
+        <h2 class="section-title">价格方案 · Pricing</h2>
+      </div>
+
+      <div class="pricing">
+
+        <div class="price-card">
+          <h3>设计账号</h3>
+          <p>US$ 549 / 年</p>
+        </div>
+
+        <div class="price-card popular">
+          <h3>生产账号</h3>
+          <p>US$ 1,500 / 年起</p>
+        </div>
+
+        <div class="price-card">
+          <h3>买断方案</h3>
+          <p>US$ 10,099</p>
+        </div>
+
+      </div>
+
     </div>
+  </section>
 
-    <div class="card">
-        <img src="cabinet-library3.png">
-        <div class="card-title">橱柜参数库 03 · Cabinet Library</div>
+  <!-- Contact -->
+  <section id="contact" style="background: var(--bg-light);">
+    <div class="container">
+
+      <div class="section-head">
+        <div class="section-eyebrow">CONTACT</div>
+        <h2 class="section-title">联系合作 · Contact</h2>
+      </div>
+
+      <div class="contact-card">
+        <p>Email: your-email@example.com</p>
+        <p>WhatsApp: +1 000 000 0000</p>
+        <p>WeChat: your-wechat</p>
+      </div>
+
     </div>
+  </section>
 
-    <div class="card">
-        <img src="nesting-layout2.png">
-        <div class="card-title">Nesting layout 示例 02</div>
-    </div>
-</div>
-
-<!-- 产品介绍 -->
-<h2 class="section-title" id="features">产品功能介绍 · Features</h2>
-
-<div class="features">
-    ✔ 极速建模：比传统 CAD 快 3–5 倍<br>
-    ✔ 全参数化模型库：橱柜 / 衣柜 / 高柜 / 门板 / 台面<br>
-    ✔ 自动排料：智能优化开料方案，节省 10–20% 板材<br>
-    ✔ CNC 输出：支持 G-code / XXL / CIX / CSV<br>
-    ✔ 打孔规则自动生成：Minifix、木销、拉米诺、暗铰链等<br>
-    ✔ 工艺可配置：顶底板、背板、封边、见光面自由调整<br>
-    ✔ 二维码标签：包含板件信息、五金数量、装配方向<br>
-    ✔ 工厂可定制：对接任意 CNC 设备与本地生产流程<br>
-</div>
-
-<!-- 视频教程 -->
-<h2 class="section-title" id="videos">视频教程 · Tutorials</h2>
-
-<div class="video-box">
-    <h3>入门教程</h3>
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID1"></iframe>
-</div>
-
-<div class="video-box">
-    <h3>自动排料演示</h3>
-    <iframe src="https://www.youtube.com/embed/VIDEO_ID2"></iframe>
-</div>
-
-<!-- 联系方式 -->
-<h2 class="section-title" id="contact">联系我们 · Contact</h2>
-
-<div class="contact-box">
-    📞 WhatsApp：<b>+1 234 567 890</b><br>
-    💬 微信：<b>your-wechat</b><br>
-    📧 Email：<b>your@email.com</b><br>
-    🌐 官网：<b>wodemine1-jpg.github.io</b><br>
-</div>
+</main>
 
 <footer>
-    © 2025 ArchiWood — 橱柜设计与 CNC 生产系统
+  © <span id="y"></span> ArchiWood
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </footer>
 
 </body>
