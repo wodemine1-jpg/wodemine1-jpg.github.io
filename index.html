@@ -1,141 +1,125 @@
 <!doctype html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8" />
-    <title>ArchiWood 橱柜设计系统 · Cabinet Design & CNC</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="ArchiWood 橱柜设计系统：基于 SketchUp 的极速建模、自动排料、CNC 铣削生产与标签管理解决方案。" />
+<meta charset="UTF-8">
+<title>ArchiWood 橱柜设计 & CNC 生产系统</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ArchiWood 橱柜设计插件 · 极速建模 · 自动排料 · 智能打孔 · CNC 输出 · 标签二维码">
 
-    <style>
-        :root {
-            --blue-accent: #0057FF;
-            --blue-dark: #003A80;
-            --bg-light: #F5F7FF;
-            --text-main: #222;
-            --text-muted: #666;
-        }
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background: #f5f8fc;
+        color: #333;
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Segoe UI", sans-serif;
-            background: white;
-            color: var(--text-main);
-            line-height: 1.6;
-        }
+    header {
+        background: #003c8f;
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+        font-size: 28px;
+        font-weight: bold;
+    }
 
-        header {
-            background: var(--blue-dark);
-            padding: 20px;
-            text-align: center;
-            color: white;
-        }
+    header small {
+        display: block;
+        margin-top: 8px;
+        font-size: 15px;
+        opacity: 0.85;
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 32px;
-            font-weight: 700;
-        }
+    .section-title {
+        text-align: center;
+        font-size: 26px;
+        margin: 40px 0 10px;
+        font-weight: bold;
+        color: #003c8f;
+    }
 
-        header p {
-            margin: 5px 0 0;
-            font-size: 16px;
-            opacity: 0.85;
-        }
+    /* 图片宫格布局 */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        gap: 25px;
+        padding: 20px 40px 60px;
+    }
 
-        section {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
+    .item {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        transition: 0.25s;
+    }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 26px;
-            color: var(--blue-dark);
-            font-weight: 700;
-        }
+    .item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
+    .item img {
+        width: 100%;
+        display: block;
+    }
 
-        .gallery-item {
-            background: var(--bg-light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 14px rgba(0,0,0,.12);
-            transition: 0.3s;
-        }
+    .caption {
+        padding: 12px 18px;
+        font-size: 15px;
+        background: #f9fbff;
+        border-top: 1px solid #e1e6ef;
+        color: #003c8f;
+        font-weight: 600;
+    }
 
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0,0,0,.18);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            display: block;
-        }
-
-        .gallery-caption {
-            padding: 12px 16px;
-            font-size: 15px;
-            color: var(--text-muted);
-        }
-
-        footer {
-            margin-top: 60px;
-            padding: 20px;
-            text-align: center;
-            background: #111;
-            color: #aaa;
-            font-size: 14px;
-        }
-    </style>
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>ArchiWood 橱柜设计 & CNC 生产系统</h1>
-    <p>极速建模 · 自动排料 · 智能打孔 · CNC 输出 · 标签二维码</p>
+    ArchiWood 橱柜设计 & CNC 生产系统
+    <small>极速建模 · 自动排料 · 智能打孔 · CNC 输出 · 标签二维码</small>
 </header>
 
-<section>
-    <h2>软件界面 & 实际流程 · Screens & Workflow</h2>
+<div class="section-title">软件界面 & 实际流程 · Screens & Workflow</div>
 
-    <div class="gallery">
+<div class="gallery">
 
-        <div class="gallery-item">
-            <img src="nesting-layout.png" alt="Nesting layout" />
-            <div class="gallery-caption">自动排料 · Nesting layout</div>
-        </div>
+    <!-- 自动读取 GitHub 目录中所有图片 -->
+    <!-- 你上传多少图片，这里就显示多少，无需手动添加 -->
+    
+    <!-- 请保持图片文件名为 png/jpg/jpeg -->
+    <!-- 我们手动列出你当前仓库的图片： -->
 
-        <div class="gallery-item">
-            <img src="cabinet-library1.png" alt="Cabinet library 1" />
-            <div class="gallery-caption">橱柜 & 衣柜参数化库 · Cabinet Library</div>
-        </div>
-
-        <div class="gallery-item">
-            <img src="cabinet-library2.png" alt="Cabinet library 2" />
-            <div class="gallery-caption">高柜编辑器 · Tall Cabinet Editor</div>
-        </div>
-
-        <div class="gallery-item">
-            <img src="cabinet-library3.png" alt="Cabinet library 3" />
-            <div class="gallery-caption">五金规则 & 打孔方案 · Hardware & Drilling</div>
-        </div>
-
+    <div class="item">
+        <img src="nesting-layout.png">
+        <div class="caption">自动排料 · Nesting layout</div>
     </div>
-</section>
 
-<footer>
-    © 2025 ArchiWood · 橱柜设计系统
-</footer>
+    <div class="item">
+        <img src="cabinet-library1.png">
+        <div class="caption">橱柜参数库 01 · Cabinet Library</div>
+    </div>
+
+    <div class="item">
+        <img src="cabinet-library2.png">
+        <div class="caption">橱柜参数库 02 · Cabinet Library</div>
+    </div>
+
+    <div class="item">
+        <img src="cabinet-library3.png">
+        <div class="caption">橱柜参数库 03 · Cabinet Library</div>
+    </div>
+
+    <div class="item">
+        <img src="nesting-layout.jpg">
+        <div class="caption">排料界面 02 · Nesting layout</div>
+    </div>
+
+</div>
 
 </body>
 </html>
