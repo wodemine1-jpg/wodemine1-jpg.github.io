@@ -269,4 +269,463 @@
     }
     .step p {
       font-size: 13px;
-      color:
+      color: var(--text-muted);
+    }
+
+    /* gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .gallery-item {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+      background: #0b1120;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-caption {
+      padding: 8px 10px;
+      font-size: 12px;
+      color: #e5e7eb;
+      background: linear-gradient(to bottom, #020617, #020617);
+    }
+
+    /* pricing */
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .price-card {
+      border-radius: var(--radius);
+      border: 1px solid #e5e7eb;
+      padding: 18px;
+      background: #fff;
+      position: relative;
+    }
+    .price-card.popular {
+      border-color: var(--blue);
+      box-shadow: var(--shadow);
+    }
+    .price-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(13,110,253,0.1);
+      color: var(--blue-dark);
+    }
+    .price-name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .price-value {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--blue-dark);
+      margin-bottom: 4px;
+    }
+    .price-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .price-list {
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .price-list li {
+      margin-bottom: 4px;
+    }
+
+    /* contact */
+    .contact-card {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow);
+    }
+    .contact-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .contact-item {
+      font-size: 13px;
+    }
+    .contact-label {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .contact-value {
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 16px 0;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      background: #f9fafb;
+      margin-top: 32px;
+    }
+
+    /* responsive */
+    @media (max-width: 880px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .pricing {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .gallery { grid-template-columns: minmax(0, 1fr); }
+      .grid { grid-template-columns: minmax(0, 1fr); }
+      .steps { grid-template-columns: minmax(0, 1fr); }
+      .hero-title { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">
+      ArchiWood
+      <span>Cabinet Software</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#who">适合谁 · Who</a>
+      <a href="#features">优势 · Features</a>
+      <a href="#workflow">流程 · Workflow</a>
+      <a href="#gallery">截图 · Demo</a>
+      <a href="#pricing">价格 · Pricing</a>
+      <a href="#contact">联系 · Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-eyebrow">KITCHEN & FURNITURE SOFTWARE</div>
+        <h1 class="hero-title">
+          <span>ArchiWood</span> 橱柜软件<br />
+          从设计到 <span>排料 · CNC</span> 一次完成
+        </h1>
+        <p class="hero-sub">
+          面向 <strong>工厂 / 加工店 / 设计师</strong> 的
+          <strong>SketchUp 参数化橱柜 & 全屋定制系统</strong>。  
+          快速出图纸、清单、排料图与 CNC 代码，减少人工、减少错误。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">预约演示 · Book a Demo</a>
+          <a class="btn btn-outline" href="#gallery">查看软件截图 · View Screens</a>
+        </div>
+        <p class="hero-note">
+          🇨🇳 中文 + 🌍 English 远程培训支持 · 支持全球工厂 / 工作室。
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-tag">What you get · 你能得到什么</div>
+        <ul class="hero-list">
+          <li><span class="bullet">✓</span> 10× 设计速度：拖拽柜体，参数改尺寸，自动生成结构。</li>
+          <li><span class="bullet">✓</span> 完整橱柜 / 衣柜 / 高柜 / 转角库，支持自建模型库。</li>
+          <li><span class="bullet">✓</span> 一键排料、自动优化开料图，提高板材利用率。</li>
+          <li><span class="bullet">✓</span> 输出 G-code / XXL / NC 等 CNC 代码，对接你的设备。</li>
+          <li><span class="bullet">✓</span> 远程安装 + 培训 + 工艺梳理，帮你把第一单真正做出来。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who -->
+  <section id="who">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">WHO IS IT FOR</div>
+        <h2 class="section-title">ArchiWood 适合谁？Who is it for?</h2>
+        <p class="section-sub">只要你在做板式橱柜 / 定制家具，这套系统都能帮你省时间、省材料、少出错。</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>板式家具工厂 · Factories</h3>
+          <p>已有数控设备，希望从传统 CAD/CAM 升级到可视化设计 + 自动排料 + 直接出 CNC。</p>
+          <div>
+            <span class="tag-pill">Nesting CNC</span>
+            <span class="tag-pill">六面钻</span>
+            <span class="tag-pill">封边线</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>橱柜门店 / 工作室 · Studios</h3>
+          <p>自己不一定有工厂，但需要快速出方案、结构图和下料清单，交给合作工厂加工。</p>
+          <div>
+            <span class="tag-pill">快速方案</span>
+            <span class="tag-pill">高质量效果图</span>
+            <span class="tag-pill">拆单清单</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>独立设计师 · Designers</h3>
+          <p>已经会 SketchUp，希望拥有一套真正能落地生产的橱柜 / 定制家具工作流。</p>
+          <div>
+            <span class="tag-pill">SketchUp</span>
+            <span class="tag-pill">参数化库</span>
+            <span class="tag-pill">生产可用</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" style="background: var(--bg-light);">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">KEY FEATURES</div>
+        <h2 class="section-title">核心优势 · Key Benefits</h2>
+        <p class="section-sub">我们不是一个玩具插件，而是一整套设计 + 工艺 + 生产 的系统。</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>① 参数化橱柜库 · Parametric Library</h3>
+          <p>地柜、吊柜、高柜、转角柜、特殊柜体……全部参数化，可按你工厂工艺深度定制。</p>
+          <p>Cabinets are fully parametric: width / height / depth / structure & hardware are all configurable.</p>
+        </div>
+        <div class="card">
+          <h3>② 一键改尺寸 · Instant Resizing</h3>
+          <p>成套橱柜画好后，客户要改尺寸？一个命令整体拉伸，板件、孔位、五金全部自动更新。</p>
+          <p>Change size at any time while keeping drilling & connections correct.</p>
+        </div>
+        <div class="card">
+          <h3>③ 直接出 CNC 代码 · Direct CNC Output</h3>
+          <p>支持 G-code / XXL / 其他格式，对接 nesting、六面钻、加工中心等设备。</p>
+          <p>No more manual programming: send jobs from design to machine in minutes.</p>
+        </div>
+        <div class="card">
+          <h3>④ 排料优化 · Nesting Optimizer</h3>
+          <p>自动排版、优化板材利用率，可手动微调切割顺序与启动位置。</p>
+          <p>Save materials and cutting time with smart nesting.</p>
+        </div>
+        <div class="card">
+          <h3>⑤ 工艺检查 · Process Checker</h3>
+          <p>自动检查孔位、榫槽、碰撞、纹理方向等问题，减少现场返工。</p>
+        </div>
+        <div class="card">
+          <h3>⑥ 远程培训 & 服务 · Training & Support</h3>
+          <p>远程安装、按你的工艺建立基础模型库，手把手带你做完第一个真实项目。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Workflow -->
+  <section id="workflow">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">WORKFLOW</div>
+        <h2 class="section-title">从客户方案到 CNC · 工作流程</h2>
+        <p class="section-sub">Typical workflow from design to production.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>在 SketchUp 中布置柜体</h3>
+          <p>从橱柜库中拖拽地柜、吊柜、高柜、转角柜等，几分钟搭好厨房 / 房间布局。</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>参数调整 & 工艺选择</h3>
+          <p>调整尺寸、板厚、背板方式、抽屉、铰链、拉手、灯槽等，系统自动生成内部结构。</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>自动排料 & 检查</h3>
+          <p>一键生成排料图、标签、清单，并做工艺检查，提示可能的错误和碰撞。</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>输出 CNC & 生产</h3>
+          <p>导出 CNC 文件交给设备加工，也可以输出 PDF 图纸与 Excel 清单给合作工厂。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" style="background: var(--bg-light);">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">SCREENSHOTS</div>
+        <h2 class="section-title">软件界面 & 实际流程 · Screens & Workflow</h2>
+        <p class="section-sub">以下是部分你刚才上传的图片示例，可以自由替换和增减。</p>
+      </div>
+
+      <div class="gallery">
+        <!-- 把 your-image-01.jpg 改成你仓库里真实的图片文件名 -->
+        <div class="gallery-item">
+          <img src="your-image-01.jpg" alt="Nesting layout">
+          <div class="gallery-caption">自动排料 · Nesting layout</div>
+        </div>
+        <div class="gallery-item">
+          <img src="your-image-02.jpg" alt="Cabinet library">
+          <div class="gallery-caption">橱柜 & 衣柜参数化库 · Cabinet Library</div>
+        </div>
+        <div class="gallery-item">
+          <img src="your-image-03.jpg" alt="Tall cabinet editor">
+          <div class="gallery-caption">高柜编辑 · Tall cabinet editor</div>
+        </div>
+        <div class="gallery-item">
+          <img src="your-image-04.jpg" alt="Hardware & drilling">
+          <div class="gallery-caption">五金与打孔规则 · Hardware & drilling</div>
+        </div>
+        <div class="gallery-item">
+          <img src="your-image-05.jpg" alt="Labels and QR codes">
+          <div class="gallery-caption">板件标签 & 二维码 · Labels & QR</div>
+        </div>
+        <div class="gallery-item">
+          <img src="your-image-06.jpg" alt="CabinetManager">
+          <div class="gallery-caption">Cabinet Manager · 深度工艺管理</div>
+        </div>
+      </div>
+
+      <p style="font-size:12px;color:var(--text-muted);margin-top:10px;">
+        提示：如果你后面继续上传更多图片，只要在上面复制一个 <code>&lt;div class="gallery-item"&gt;…</code>，
+        把 <code>src="文件名"</code> 换成新图片的名字即可。
+      </p>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">PRICING</div>
+        <h2 class="section-title">价格方案 · Pricing Options</h2>
+        <p class="section-sub">下面是示意文字，你可以按照自己真实的报价改数字和描述。</p>
+      </div>
+
+      <div class="pricing">
+        <div class="price-card">
+          <div class="price-name">设计账号 · Design Account</div>
+          <div class="price-value">US$ 549 / 年</div>
+          <div class="price-note">适合只负责画图的设计师，不能导出生产代码。</div>
+          <ul class="price-list">
+            <li>✅ 使用完整橱柜 / 衣柜参数化库</li>
+            <li>✅ 输出效果图、结构图、清单</li>
+            <li>🔒 不含 CNC 代码导出</li>
+          </ul>
+        </div>
+
+        <div class="price-card popular">
+          <div class="price-badge">MOST POPULAR</div>
+          <div class="price-name">生产账号 · Service + Production</div>
+          <div class="price-value">US$ 1,500 / 年起</div>
+          <div class="price-note">适合工厂 / 加工店，从设计到排料、CNC 一体化。</div>
+          <ul class="price-list">
+            <li>✅ 包含一个主账号</li>
+            <li>✅ 对接一台 CNC 设备（G-code / XXL 等）</li>
+            <li>✅ 远程安装 + 培训 + 模型库搭建</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary" style="width:100%;margin-top:6px;">咨询详细报价 · Talk to us</a>
+        </div>
+
+        <div class="price-card">
+          <div class="price-name">买断方案 · Lifetime Plan</div>
+          <div class="price-value">US$ 10,099 + 服务费</div>
+          <div class="price-note">适合已经稳定使用、希望长期固定成本的大型客户。</div>
+          <ul class="price-list">
+            <li>✅ 账号永久使用权</li>
+            <li>✅ 仍需按年支付技术服务 / 更新</li>
+            <li>✅ 可根据你的工厂定制更多功能</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="background: var(--bg-light);">
+    <div class="container">
+      <div class="section-head">
+        <div class="section-eyebrow">CONTACT</div>
+        <h2 class="section-title">联系合作 · Book a Call</h2>
+        <p class="section-sub">
+          告诉我你的工厂 / 工作室情况（国家、设备、现在用什么软件），我们会用中文或英文跟你沟通，
+          安排一次 30 分钟的在线演示。
+        </p>
+      </div>
+
+      <div class="contact-card">
+        <p style="font-size:14px;">
+          请通过以下任意方式联系（仅示例，请改成你自己的联系方式）：
+        </p>
+        <div class="contact-row">
+          <div class="contact-item">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">your-email@example.com</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value">+1 000 000 0000</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">WeChat / 微信</div>
+            <div class="contact-value">你的微信号</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Toronto · Guilin · Remote worldwide</div>
+          </div>
+        </div>
+        <p style="font-size:12px;color:var(--text-muted);margin-top:10px;">
+          Tip: 如果你已经有机器型号、控制系统（例如：Biesse / Homag / SCM / 其他），
+          可以提前发给我们，更快判断对接方式。
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © <span id="y"></span> ArchiWood · Cabinet Design & Manufacturing System
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</footer>
+
+</body>
+</html>
